@@ -1,0 +1,8 @@
+/* ----- White Paper ----- */
+.whitepaper {
+    display: block;
+    background: var(--pirate-lightblue);
+    border: none;
+    height: 90vh;
+    width: 100%;
+}

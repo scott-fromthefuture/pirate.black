@@ -1,0 +1,48 @@
+<html lang="{{ page.lang }}">
+  <head>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}{{ site.keywords }}{% endif %}">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">  
+    <meta name="author" content="Pirate Chain">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#151326">
+    <meta name="robots" content="index, follow">
+
+    <!--Translations-->
+    <link rel="alternate" href="https://pirate.black/" hreflang="x-default" />
+    {% for language in site.data.languages.list -%}
+      {% if language[0] == "en" -%}
+        <link rel="alternate" hreflang="{{ language[0] }}" href="https://pirate.black/{{ page.name | replace:'.html',''}}" />
+      {% else -%}
+        <link rel="alternate" hreflang="{{ language[0] }}" href="https://pirate.black/lang/{{ language[0] }}/{{ page.name | replace:'.html',''}}" />
+      {% endif %}  
+    {%- endfor %}
+
+    <!--Open Graph Tags-->
+    <meta property="og:locale" content="{{ site.data.languages.list[page.lang].locale }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:url" content="https://pirate.black/" />
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:image" content="{% if page.thumbnail %}{{ site.baseurl }}{{ site.img }}{{ page.thumbnail }}{% else %}{{ site.baseurl }}{{ site.img }}{{ site.default_thumbnail }}{% endif %}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+
+    <!--Twitter Card Tags-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@PirateChain" />
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:image" content="{% if page.thumbnail %}{{ site.baseurl }}{{ site.img }}{{ page.thumbnail }}{% else %}{{ site.baseurl }}{{ site.img }}{{ site.default_thumbnail }}{% endif %}" />
+
+    <!--Link Tags-->
+    <link rel="canonical" href="https://pirate.black/" />
+    <link rel="icon" href="{{ site.baseurl }}{{ site.img }}logo/Pirate_Logo_P_Gold.svg" sizes="any" type="image/svg+xml" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/global.css">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/nav.css">
+    <script>BASEURL="{{ site.baseurl }}"</script>
+    {% include links.html %}
+  </head>

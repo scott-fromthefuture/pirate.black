@@ -1,0 +1,242 @@
+---
+title: Pirate Chain | Mining ARRR
+description:  Mining Pirate Chain is a great way to earn ARRR while supporting the 
+              decentralized and secure nature of the Pirate Chain network. By participating in 
+              the mining process, miners help validate transactions and secure the network, potentially 
+              earning a profit in the process. Additionally, mining can be a way for a person to learn 
+              more about cryptocurrency and gain experience in the field.
+keywords: crypto mining, Pirate Chain mining, blockchain mining, altcoin mining, mining pool, mining calculator, mining hashrate, mining rewards, privacy coin mining
+thumbnail: meta/mining.png
+layout: page
+css-list:
+  - "assets/css/mining.css"
+javascript-list:
+  - "assets/js/mining.js"
+lang: en 
+--- 
+
+<!-- hero section -->
+<section class="full-width deepbg hero-section" id="rippled" >
+  <div class="content"> 
+    <div class="bubble header-container floating3"> 
+      <h1>MINING</h1>
+      <p><span class="highlight-txt">Earn</span> $ARRR by<br />
+        <span class="action">securing the network</span></p>
+    </div>
+    <div class="kraken-container"> 
+      <img alt="ASIC Miner" class="asic floating2" src="{{ site.baseurl }}{{ site.img }}site/asic.png" />           
+      <img alt="A Miner's GPU" class="gpu floating3" src="{{ site.baseurl }}{{ site.img }}site/gpu.png" />
+      <img alt="A Sea Kraken" class="kraken floating" src="{{ site.baseurl }}{{ site.img }}site/kraken.png" /> 
+    </div>  
+    <audio id="og" src="{{ site.baseurl }}assets/audio/og.mp3"></audio>  
+    <button type="button" onclick="play_pause()"><img id="pp" src="{{ site.baseurl }}{{ site.img }}icons/play.svg"></button>
+  </div>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- stats section -->
+<section class="full-width lightbg stats-section lightglowup">
+  <div class="content">  
+    <h1>Network <span class="highlight-txt">Stats</span></h1>
+    <p class="desc">Pirate Chain network utilizes equihash, a Proof-of-Work (PoW) consensus algorithim that secures the blockchain. 
+    While technically CPU and GPU mineable, miners typically earn $ARRR by mining with ASIC mining hardware.</p>
+    <div class="stat-container">
+      <div class="mining-stat">
+        <div>
+            Max Supply
+            <h3>200m</h3>
+            ARRR
+        </div>
+      </div>
+      <div class="mining-stat">
+        <div>
+          Blocktime
+          <h3>60s</h3>
+          Average
+        </div>
+      </div>
+      <div class="mining-stat">
+        <div>
+          Block Rewards
+          <h3 id="subsidy">8</h3>
+          ARRR
+        </div>
+      </div>
+      <div class="mining-stat">
+        <div>
+          Height
+          <h3 id="height">2190462</h3>
+          Blocks
+        </div>
+      </div>  
+      <div class="mining-stat">
+        <div>
+          Halving Length
+          <h3>270</h3>
+          Days
+        </div>
+      </div>
+    </div>    
+    <div class="nexthalving">
+      <h2 onclick="halvening();">Next Halving</h2>
+      <div id="celebrate"></div>    
+      <div id="anymoment">Any moment now!</div>
+      <div class="countdown" translate="no">
+        <div class="countbox">
+          <span class="count" id="days" style="max-width: 70px;">270</span>
+          Days
+        </div>
+        <div class="countbox">
+          <span class="count" id="hours">00</span>
+          Hours
+        </div>
+        <div class="countbox">
+          <span class="count" id="mins">00</span>
+          Mins
+        </div>
+        <div class="countbox">
+          <span class="count" id="secs">00</span>
+          Secs
+        </div>
+      </div>
+      <h3 style="margin-top:40px;">Block #<span id="next_halving_block">000000</span></h3> 
+      Estimated on <span id="next_halving_date"></span>
+      <div class="blksremaining">
+        Progress: <span id="progress_percent">0.00%</span>
+        <div id="barcontainer"><div id="barborder"><div id="bar"></div></div></div>
+        Block <span id="progress">0</span> of 388885 ( <span id="remaining">388885</span> remaining )
+      </div>
+    </div>
+  </div>
+  <img alt="" class="divider-bottom" src="{{ site.baseurl }}{{ site.img }}dividers/basic-triangle-bottom-deep.svg" />
+</section>
+
+<!-- calculator section -->
+<section class="full-width deepbg calculator-section">
+  <div class="middle-box"> 
+    <h1>Mining <span class="highlight-txt">Calculator</span></h1>
+    <div class="calc-container">
+      <form id="calcForm">
+        <div class="input-area" translate="no">
+          <div class="field">
+            <label for="hashrate">Hashrate:</label>
+            <input type="number" size="6" id="hashrate" name="hashrate" value="420" required=""> kSol/s
+          </div>
+          <div class="field">
+            <label for="power">Power:</label>
+            <input type="number" size="6" id="power" name="power" value="1500" required=""> Watts
+          </div>
+          <div class="field">
+            <label for="cost">Energy Cost:</label>
+            <input type="number" size="4" id="cost" name="cost" value="0.12" required=""> $/kWh
+          </div>
+          <div class="field">
+            <label for="fee">Pool Fee:</label>
+            <input type="number" size="3" id="fee" name="fee" value="1" required=""> %
+          </div>
+        </div>
+        <button class="a-btn">Calculate</button>
+      </form>
+      <div class="result-area" id="instructions-area"  style="display:block;">
+        <p>
+        <i>NOTE: these results are an estimate. Network dificulty adjusts every block. Actual revenue may vary significantly over time</i>
+        </P>
+      </div>
+      <div class="result-area" id="result-area"  style="display:none;">
+        <h3>Results</h3>
+        <table id="result-table">
+          <thead>
+            <tr>
+              <th class="header-blank"></th>
+              <th class="header">Rewards<br /><small>(ARRR)</small></th>
+              <th class="header">Revenue</th>
+              <th class="header">Fees</th>
+              <th class="header">Costs</th>
+              <th class="header">Profit</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pools section -->
+<section class="full-width lightbg pools-section">
+  <div class="content"> 
+    <div class="box-container"> 
+      <div class="box-right">
+        <img alt="CPU with Pirate Skull Logo" src="{{ site.baseurl }}{{ site.img }}site/cpu.png" />
+      </div>
+      <div class="box">
+        <h1>Mining <span class="highlight-txt">Pools</span></h1>
+        <p>The preferred mining pool for Pirate Chain is <a href="https://piratepool.io/">piratepool.io, created and operated by the community</a>
+        Plus, 66% of the 1% fee is donated back to the Pirate Chain <a href="donations">Community Funds Pool</a>.
+        </p>
+        <p>
+          It is also recommended when possible to spread hashpower between the various pools. 
+        </p>
+        <a href="https://miningpoolstats.stream/piratechain" target="_blank" rel="noopener" class="a-btn">More Pools</a>
+      </div>
+    </div>
+    </div>
+</section>
+
+<!-- howto section -->
+<section class="full-width deepbg howto-section">
+  <div class="content"> 
+    <h2>Mining Guides</h2>
+    <div class="box-container">
+      <div class="box yt">
+        <div class="yt-container" id="asic-howto"  onclick="playVideo('asic-howto')">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/GIMCapXZKQw" 
+            title="How to Mine ARRR with a ASIC video player" 
+            frameborder="0"  rel="0" enablejsapi="1" modestbranding="0"  controls="0"
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <div class="box-right yt">
+        <div class="yt-container" id="gpu-howto"  onclick="playVideo('gpu-howto')">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/hJ7OYGc9_Lk" 
+            title="How to MINE ARRR with a GPU video player" 
+            rel="0" enablejsapi="1" modestbranding="0"  controls="0" 
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contact section -->
+<section class="full-width lightbg contact-section ">
+  <div class="content">
+    <div class="box-container">
+      <div class="box">
+        <img alt="Moving image of Pirate Ship on Moving Waves" src="{{ site.baseurl }}assets/gifs/cARRRtoon.gif" />
+      </div>
+      <div class="box-right">
+        <h2>Still have <span class="highlight-txt">Questions</span>?</h2>
+        <p>
+          Come and chat with us about hardware, configuration, 
+          pools, or any other questions in regards to mining $ARRR!
+        </p>
+        <a class="a-btn" href="https://discord.gg/DT3UhzdzGa" target="_blank" rel="noopener" >Ask a Question</a>     
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
+<script src="https://explorer.pirate.black/socket.io/socket.io.js"></script>
