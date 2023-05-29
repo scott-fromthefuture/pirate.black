@@ -1,7 +1,7 @@
 
 # This repository is a demo static website for the Pirate Chain Network
 
-The demo can be veiwed at [https://scott-fromthefuture.github.io/pirate.black/](https://scott-fromthefuture.github.io/pirate.black/). 
+The demo can be veiwed at [https://scott-fff.github.io/pirate.black/](https://scott-fromthefuture.github.io/pirate.black/). 
 <br /><br />
 The main intent of this demo was to create a static website that is automated, low maintenence, and open to the community. 
 
@@ -23,7 +23,7 @@ The main intent of this demo was to create a static website that is automated, l
 
 The drawback from going to a static website however is that there is no database for things like a self hosted blog platform, or CMS for people to make changes to content graphically. Ultimately it was decided to go with a more complete server with a site and blog system built on wordpress
 <br /><br />
-## ## This Demo is UNFINISHED. Some features were not complete. Do not rely on the scripts or any info on the website. The static website is in the `_site` directory, which are the only files from this repository needed for the static website.   
+## ## This Demo is UNFINISHED. Some features were not completed. Do not rely on the scripts or any info on the website.
 
 <br /><br />
 <hr />
