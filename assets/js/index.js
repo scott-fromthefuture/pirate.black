@@ -31,6 +31,7 @@ fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/pira
     };
 
     let output = '';
+    console.log(JSON.stringify(posts[0], null, 2));
     let item = posts[0];
       output += `
       <article class="update-post" itemscope itemType="http://schema.org/BlogPosting">
